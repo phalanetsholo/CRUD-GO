@@ -12,7 +12,7 @@ def index():
 def add_employee():
     if request.method == 'POST':
         First_name = request.form['First_name']
-        Last_name = request.form['Fast_name']
+        Last_name = request.form['Last_name']
         Email = request.form['Email']
         Phone = request.form['Phone']
         Department = request.form['Department']
@@ -40,6 +40,35 @@ def view_employees():
     cur.close()
     conn.close()
     return render_template('view_employees.html', employees=employees)
+
+# Update Employee Route
+@app.route('/update/<int:id>', methods=['GET', 'POST'])
+def update_employee(id):
+    conn = get_db_connection()
+    cur = conn.cursor()
+    if request.method == 'POST':
+        first_name = request.form['first_name']
+        last_name = request.form['last_name']
+        email = request.form['email']
+        phone = request.form['phone']
+        department = request.form['department']
+
+        cur.execute(
+            'UPDATE employees SET first_name = %s, last_name = %s, email = %s, phone = %s, department = %s'
+            'WHERE id = %s',
+            (first_name, last_name, email, phone, department, id)
+        )
+        conn.commit()
+        cur.close()
+        conn.close()
+
+        return redirect(url_for('view_employees'))
+    
+    cur.execute('SELECT * FROM employees WHERE id = %s', (id,))
+    employee = cur.fetchone()
+    cur.close()
+    conn.close()
+    return render_template('update_employee.html', employee=employee)
 
 # Run the App
 if __name__ == '__main__':
