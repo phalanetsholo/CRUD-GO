@@ -8,11 +8,13 @@
 </head>
 <body>
     <header>
-        <h1>Employee Management System</h1>
+        <div class="logo-container">
+            <img src="../static/resources/Logo.png" alt="Logo" class="logo">
+        </div>
         <nav>
             <a href="{{ url_for('index') }}">Home</a>
             <a href="{{ url_for('add_employee') }}">Add Employee</a>
-            <a href="{{ url_for('view_employees') }}">View Employees</a>
+            <a href="{{ url_for('view_employees') }}" id="sub">View Employees</a>
         </nav>
     </header>
     <main>
@@ -21,4 +23,3 @@
 </body>
 </html>
 
-`

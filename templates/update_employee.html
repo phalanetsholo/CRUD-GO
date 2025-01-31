@@ -15,7 +15,12 @@
     <input type="text" id="Phone" name="Phone" value="{{ employee[4] }}" required>
     <br>
     <label for="Department">Department:</label>
-    <input type="text" id="Department" name="Department" value="{{ employee[5] }}" required>
+    <select name="Department" id="Department" required>
+        <option value="">Select Department</option>
+        <option value="HR">HR</option>
+        <option value="IT">IT</option>
+        <option value="Sales">Sales</option>
+    </select>
     <br>
     <button type="submit">Update Employee</button>
 </form>

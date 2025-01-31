@@ -3,8 +3,8 @@ import psycopg2
 def get_db_connection():
     conn = psycopg2.connect(
         dbname="Tsholofelo",
-        user="postgres",  # Replace with your PostgreSQL username
-        password="Oratile@22",  # Replace with your PostgreSQL password
+        user="postgres",  
+        password="Oratile@22",  
         host="localhost",
         port="5433"
     )
