@@ -70,18 +70,6 @@ def update_employee(id):
     conn.close()
     return render_template('update_employee.html', employee=employee)
 
-@app.route('/delete/<int:id>', methods=['POST'])
-def delete_employee(id):
-    conn = get_db_connection()
-    cur = conn.cursor()
-    
-    # Delete the employee by ID
-    cur.execute('DELETE FROM employees WHERE id = %s', (id,))
-    conn.commit()
-    cur.close()
-    conn.close()
-
-    return redirect(url_for('view_employees'))
 
 
 if __name__ == '__main__':
